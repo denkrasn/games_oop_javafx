@@ -95,7 +95,7 @@ public class Logic {
         boolean result = false;
         for (int i = 0; i < table.length; i++) {
             if (board[index][index] == 1) {
-                if (monoHorizontal(board, index) || monoVertical(board, index)) {
+                if (monoHorizontal(table, index) || monoVertical(table, index)) {
                     result = true;
                 break;
             }
