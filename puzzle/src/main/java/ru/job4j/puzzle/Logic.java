@@ -97,27 +97,27 @@ public class Logic {
             if (board[index][index] == 1) {
                 if (monoHorizontal(table, index) || monoVertical(table, index)) {
                     result = true;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public int[][] convert() {
-        int[][] table = new int[this.size][this.size];
-        for (int row = 0; row != table.length; row++) {
-            for (int cell = 0; cell != table.length; cell++) {
-                int position = this.findBy(new Cell(row, cell));
-                if (position != -1 && this.figures[position].movable()) {
-                    table[row][cell] = 1;
+                    break;
                 }
             }
+            return result;
         }
-        return table;
-    }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(this.convert());
+        public int[][] convert () {
+            int[][] table = new int[this.size][this.size];
+            for (int row = 0; row != table.length; row++) {
+                for (int cell = 0; cell != table.length; cell++) {
+                    int position = this.findBy(new Cell(row, cell));
+                    if (position != -1 && this.figures[position].movable()) {
+                        table[row][cell] = 1;
+                    }
+                }
+            }
+            return table;
+        }
+
+        @Override
+        public String toString () {
+            return Arrays.toString(this.convert());
+        }
     }
-}
