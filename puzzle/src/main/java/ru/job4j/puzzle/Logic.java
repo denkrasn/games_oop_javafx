@@ -5,13 +5,6 @@ import ru.job4j.puzzle.firuges.Figure;
 
 import java.util.Arrays;
 
-/**
- * //TODO add comments.
- *
- * @author Petr Arsentev (parsentev@yandex.ru)
- * @version $Id$
- * @since 0.1
- */
 public class Logic {
     private final int size;
     private final Figure[] figures;
@@ -94,30 +87,32 @@ public class Logic {
         int[][] table = this.convert();
         boolean result = false;
         for (int i = 0; i < table.length; i++) {
-            if (board[index][index] == 1) {
-                if (monoHorizontal(table, index) || monoVertical(table, index)) {
+            if (table[i][i] == 1) {
+                if (monoHorizontal(table, i) || monoVertical(table, i)) {
                     result = true;
                     break;
                 }
             }
             return result;
         }
+        return result;
+    }
 
-        public int[][] convert () {
-            int[][] table = new int[this.size][this.size];
-            for (int row = 0; row != table.length; row++) {
-                for (int cell = 0; cell != table.length; cell++) {
-                    int position = this.findBy(new Cell(row, cell));
-                    if (position != -1 && this.figures[position].movable()) {
-                        table[row][cell] = 1;
-                    }
+    public int[][] convert() {
+        int[][] table = new int[this.size][this.size];
+        for (int row = 0; row != table.length; row++) {
+            for (int cell = 0; cell != table.length; cell++) {
+                int position = this.findBy(new Cell(row, cell));
+                if (position != -1 && this.figures[position].movable()) {
+                    table[row][cell] = 1;
                 }
             }
-            return table;
         }
-
-        @Override
-        public String toString () {
-            return Arrays.toString(this.convert());
-        }
+        return table;
     }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(this.convert());
+    }
+}
